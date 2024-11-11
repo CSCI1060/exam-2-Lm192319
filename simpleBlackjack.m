@@ -12,4 +12,18 @@ function avgScore = simpleBlackjack(limit, trials)
 %
 % OUTPUT avgScore – The average final score of
 % all hands.
-
+deck = [2:10, 10, 10, 10]; 
+    totalScore = 0;  
+    for trial = 1:trials
+        hand = 0;  
+        while hand < limit && hand <= 21
+            card = deck(randi(length(deck))); 
+            hand = hand + card;
+            if hand > 21
+                break;
+            end
+        end
+        totalScore = totalScore + hand;
+    end
+    avgScore = totalScore/trials;
+end
